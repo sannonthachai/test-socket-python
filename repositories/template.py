@@ -1,4 +1,4 @@
-from src.domains.template import TemplateDomain
+from domains.template import TemplateDomain
 from bson import ObjectId
 
 class TemplateRepository:

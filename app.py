@@ -22,8 +22,8 @@ app = Flask(__name__)
 CORS(app)
 api = Api(app, errors=errors)
 
-mongoengine = MongoEngine()
-mongoengine_conn = mongoengine.connector()
+mongoengine = MongoEngine(setting.MONGODB_NAME , setting.MONGODB_URI)
+pmongoengine_conn = mongoengine.connector()
 
 ###################### Test ########################
 class HelloWorld(Resource):

@@ -1,7 +1,7 @@
-from src.repositories.template import TemplateRepository
+from repositories.template import TemplateRepository
 from bson import ObjectId
 from json import loads
-from src.setting import MONGODB_GRID_FS_BOT_IMG
+from setting import MONGODB_GRID_FS_BOT_IMG
 
 class TemplateService: 
     

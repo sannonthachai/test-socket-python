@@ -1,26 +1,27 @@
 version: '3'
 services:
-    # web:
-    #     build: .
-    #     ports:
-    #         - "5000:5000"
-    #     volumes:
-    #         - .:/code
-    #     depends_on:
-            # - redis
 
-    pythoncon:
+    mongodb:
+        image: mongo:latest
+        container_name: "mongodb"
+        environment:
+          - MONGO_INITDB_ROOT_USERNAME=test
+          - MONGO_INITDB_ROOT_PASSWORD=test
+        ports:
+          - "1234:27017"
+        network_mode: bridge
+
+    python_socket:
         build: .
-        container_name: test-python
+        image: python_socket
+        container_name: python_socket
         ports:
             - "5000:5000"
-        command: gunicorn --worker-class=gevent --worker-connections=1024 -b :5000 --access-logfile - app:app/src 
-        
-    # mongodb:
-    #     image: mongo:latest
-    #     container_name: "mongodb"
-    #     environment:
-    #       - MONGO_INITDB_ROOT_USERNAME=test
-    #       - MONGO_INITDB_ROOT_PASSWORD=test
-    #     ports:
-        #   - "1234:27017"
+        environment: 
+            - MONGODB_NAME=bn-easy-sme-test
+            - MONGODB_URI=mongodb://localhost:27017
+            - MONGODB_GRID_FS_BOT_IMG=http://localhost:3000/v1/bot/gridfs?id=
+            - NAMETEST=name
+        command: gunicorn --worker-class=gevent --worker-connections=1024 -b :5000 --access-logfile - app:app 
+        network_mode: bridge
+
