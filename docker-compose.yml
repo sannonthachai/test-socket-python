@@ -1,0 +1,26 @@
+version: '3'
+services:
+    # web:
+    #     build: .
+    #     ports:
+    #         - "5000:5000"
+    #     volumes:
+    #         - .:/code
+    #     depends_on:
+            # - redis
+
+    pythoncon:
+        build: .
+        container_name: test-python
+        ports:
+            - "5000:5000"
+        command: gunicorn --worker-class=gevent --worker-connections=1024 -b :5000 --access-logfile - app:app/src 
+        
+    # mongodb:
+    #     image: mongo:latest
+    #     container_name: "mongodb"
+    #     environment:
+    #       - MONGO_INITDB_ROOT_USERNAME=test
+    #       - MONGO_INITDB_ROOT_PASSWORD=test
+    #     ports:
+        #   - "1234:27017"
