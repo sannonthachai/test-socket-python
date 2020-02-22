@@ -10,10 +10,10 @@ class TemplateRepository:
         return self.template_domain()
 
     def find_by_id(self, ID):
-        return self.template_domain.objects( object_id=ObjectId(ID))
+        return self.template_domain.objects( object_id=ID ).to_json()
 
     def find_all(self):
-        return self.template_domain.objects()
+        return self.template_domain.objects().to_json()
     
     
     

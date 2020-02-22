@@ -3,6 +3,6 @@ from datetime import datetime
 
 class TemplateDomain(Document):
     
-    object_id = ObjectIdField(max_length=200, required=True)
+    object_id = StringField(max_length=200, required=True)
     string = StringField(max_length=200, required=True, unique=True)
     date = DateTimeField(default=datetime.utcnow)
