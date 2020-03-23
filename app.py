@@ -36,6 +36,9 @@ template_repo = TemplateRepository(TemplateDomain)
 
 ##################### Services #####################
 template_service = TemplateService(template_repo)
+# template_service = TemplateService(template_repo)
+# template_service = TemplateService(template_repo)
+# template_service = TemplateService(template_repo)
 
 
 ##################### End Point ####################
